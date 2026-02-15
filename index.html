@@ -15,7 +15,18 @@ body{
 .container{
     padding:20px;
 }
+.middle-image{
+    width:20%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
+.middle-image img{
+    width:100%;
+    max-height:300px;
+    object-fit:contain;
+}
 .score-box{
     display:flex;
     justify-content:space-around;
@@ -69,26 +80,28 @@ button{
 </head>
 <body>
 
-<div class="container">
-    <h1>🔥 بنات VS أولاد 🔥</h1>
+<div class="score-box">
 
-    <div class="score-box">
-
-        <div class="team girls">
-            <h2>بنات</h2>
-            <div class="score" id="girlsScore">0</div>
-            <button onclick="addScore('girls',1)">+1</button>
-            <button onclick="addScore('girls',5)">+5</button>
-        </div>
-
-        <div class="team boys">
-            <h2>أولاد</h2>
-            <div class="score" id="boysScore">0</div>
-            <button onclick="addScore('boys',1)">+1</button>
-            <button onclick="addScore('boys',5)">+5</button>
-        </div>
-
+    <div class="team girls">
+        <h2>بنات</h2>
+        <div class="score" id="girlsScore">0</div>
+        <button onclick="addScore('girls',1)">+1</button>
+        <button onclick="addScore('girls',5)">+5</button>
     </div>
+
+    <!-- الصورة في النص -->
+    <div class="middle-image">
+        <img src="bj.jpg" alt="challenge">
+    </div>
+
+    <div class="team boys">
+        <h2>أولاد</h2>
+        <div class="score" id="boysScore">0</div>
+        <button onclick="addScore('boys',1)">+1</button>
+        <button onclick="addScore('boys',5)">+5</button>
+    </div>
+
+</div>
 
     <button class="reset" onclick="resetGame()">إعادة</button>
 </div>
