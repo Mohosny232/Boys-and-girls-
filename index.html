@@ -3,130 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بنات VS أولاد</title>
+<title>صورة التحدي</title>
+
 <style>
 body{
     margin:0;
-    font-family:Arial;
-    background:#f2f2f2;
-    text-align:center;
-}
-
-.container{
-    padding:20px;
-}
-.middle-image{
-    width:20%;
+    padding:0;
     display:flex;
     justify-content:center;
     align-items:center;
+    height:100vh;
+    background:#ffffff;
 }
 
-.middle-image img{
-    width:100%;
-    max-height:300px;
+img{
+    max-width:90%;
+    max-height:90vh;
     object-fit:contain;
-}
-.score-box{
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
-    margin-top:30px;
-}
-
-.team{
-    width:40%;
-    padding:20px;
-    border-radius:15px;
-    background:white;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-h2{
-    margin:10px 0;
-}
-
-.score{
-    font-size:40px;
-    font-weight:bold;
-    margin:20px 0;
-}
-
-button{
-    padding:10px 20px;
-    margin:5px;
-    font-size:18px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-.girls button{
-    background:#ff4da6;
-    color:white;
-}
-
-.boys button{
-    background:#0099ff;
-    color:white;
-}
-
-.reset{
-    margin-top:30px;
-    background:#333;
-    color:white;
 }
 </style>
 </head>
+
 <body>
 
-<div class="score-box">
-
-    <div class="team girls">
-        <h2>بنات</h2>
-        <div class="score" id="girlsScore">0</div>
-        <button onclick="addScore('girls',1)">+1</button>
-        <button onclick="addScore('girls',5)">+5</button>
-    </div>
-
-    <!-- الصورة في النص -->
-    <div class="middle-image">
-        <img src="bj.jpg" alt="challenge">
-    </div>
-
-    <div class="team boys">
-        <h2>أولاد</h2>
-        <div class="score" id="boysScore">0</div>
-        <button onclick="addScore('boys',1)">+1</button>
-        <button onclick="addScore('boys',5)">+5</button>
-    </div>
-
-</div>
-
-    <button class="reset" onclick="resetGame()">إعادة</button>
-</div>
-
-<script>
-let girls = 0;
-let boys = 0;
-
-function addScore(team, value){
-    if(team === 'girls'){
-        girls += value;
-        document.getElementById("girlsScore").innerText = girls;
-    }else{
-        boys += value;
-        document.getElementById("boysScore").innerText = boys;
-    }
-}
-
-function resetGame(){
-    girls = 0;
-    boys = 0;
-    document.getElementById("girlsScore").innerText = 0;
-    document.getElementById("boysScore").innerText = 0;
-}
-</script>
+<img src="bj.jpg" alt="challenge">
 
 </body>
 </html>
