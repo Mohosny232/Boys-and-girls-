@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
 <link rel="manifest" href="manifest.json">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#1877f2">
 <meta name="mobile-web-app-capable" content="yes">
 <title>صورة التحدي ثابتة</title>
@@ -142,12 +143,12 @@ gap:15px;
 }
  
 img {
-    position:fixed;       /* مثبتة */
-    top: -50px;
-    left: 0;
-    width: 100vw;          /* تغطي كامل عرض الشاشة */
-    height: 100vh;         /* تغطي كامل ارتفاع الشاشة */
-    object-fit: cover;
+    position:absolute;
+    top:50px;
+    left:0;
+    width:100%;
+    height:100vh; /* بدل 100% */
+    object-fit:cover;
     transition: transform 0.3s ease;
 }
 </style>
