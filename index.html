@@ -116,7 +116,21 @@ gap:15px;
     transform: translateY(-50%) rotate(90deg); /* مثال: 15° دوران */
 }
 
-
+.reset-button{
+    position:absolute;
+    top:calc(30% + 150px); /* تحت أزرار +1 و +5 مباشرة */
+    left:50%;
+    transform:translateX(-50%);
+    padding:15px 30px;
+    font-size:20px;
+    font-weight:bold;
+    border:none;
+    border-radius:8px;
+    background:#333; /* أسود */
+    color:white;     /* كتابة بيضاء */
+    cursor:pointer;
+    z-index:10;      /* للتأكد أنه فوق الصورة */
+}
  
 img{
     position:fixed; /* الصورة ثابتة */
