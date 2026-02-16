@@ -189,7 +189,7 @@ function addScore(team, value){
 let imageOffsetY = 0;
 
 function moveImage(value){
-    const step = 10; // كل +1 = 10px
+    const step = 10; // كل +1 = 10px للأعلى
     imageOffsetY -= step * value;
     document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
 }
