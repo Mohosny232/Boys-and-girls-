@@ -57,21 +57,23 @@ html, body{
 /* موقع الأزرار */
 .left-buttons{
     position:absolute;
-    left:20px;
-    top:50%;
-    transform: translateY(-50%);
+    right:40px;
+    top:30%; 
+    /* زاوية الدوران لليمين */
+    transform: translateY(-50%) rotate(90deg); /* مثال: 15° دوران */
+    display:flex;
+    flex-direction: column;
+}
+.right-buttons{
+    position:absolute;
+    right:40px;
+    top:30%; 
+    /* زاوية الدوران لليمين */
+    transform: translateY(-50%) rotate(90deg); /* مثال: 15° دوران */
     display:flex;
     flex-direction: column;
 }
 
-.right-buttons{
-    position:absolute;
-    right:20px;
-    top:50%;
-    transform: translateY(-50%);
-    display:flex;
-    flex-direction: column;
-}
 
 /* نص على الشمال */
 .left-text{
@@ -111,19 +113,14 @@ img{
 
     <!-- أزرار الشمال -->
     <div class="left-buttons">
-        <button class="button yellow">+1</button>
-        <button class="button yellow">+5</button>
         <button class="button red">+1</button>
         <button class="button red">+5</button>
     </div>
-
-    <!-- أزرار اليمين -->
+<!-- أزرار اليمين -->
     <div class="right-buttons">
         <button class="button yellow">+1</button>
         <button class="button yellow">+5</button>
-        <button class="button red">+1</button>
-        <button class="button red">+5</button>
+        
     </div>
-
 </body>
 </html>
