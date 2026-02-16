@@ -41,7 +41,15 @@ html, body{
     cursor:pointer;
     text-align:center;
 }
-
+.counter{
+    display:inline-block; /* يخلي الرقم عنصر مستقل */
+    min-width:60px;       /* عرض ثابت للرقم */
+    text-align:left;
+    font-size:40px;
+    font-weight:bold;
+    margin-left:15px;
+    color:black;
+}
 /* أزرار صفراء */
 
 /* أزرار صفراء */
@@ -121,7 +129,7 @@ img{
 </style>
 </head>
 <body>
-
+<button class="reset-button" onclick="resetScores()">إعادة</button>
 <img src="bj.jpg" alt="challenge">
 
 <!-- نص الرجال مع الرقم -->
@@ -159,6 +167,12 @@ function addScore(team, value){
         document.getElementById('womenCounter').innerText = womenScore;
     }
 }
+    function resetScores(){
+    menScore = 0;
+    womenScore = 0;
+    document.getElementById('menCounter').innerText = menScore;
+    document.getElementById('womenCounter').innerText = womenScore;
+    }
 </script>
 </body>
 </html>
