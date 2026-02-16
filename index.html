@@ -143,11 +143,11 @@ gap:15px;
 }
  
 img {
-    position: fixed;
-    top: -50px; /* تحرك الصورة للأعلى 50px */
+    position:absolute;       /* مثبتة */
+    top: -50px;
     left: 0;
-    width: 100%;
-    height: calc(100% + 50px); /* تعوّض عن الرفع */
+    width: 100vw;          /* تغطي كامل عرض الشاشة */
+    height: 100vh;         /* تغطي كامل ارتفاع الشاشة */
     object-fit: cover;
     transition: transform 0.3s ease;
 }
