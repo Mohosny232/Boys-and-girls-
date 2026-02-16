@@ -1,188 +1,187 @@
 <!DOCTYPE html>
-
-<html lang="ar">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<!-- استدعاء خط Tajawal من Google Fonts -->  
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">  
-<title>صورة التحدي ثابتة</title>  
-<style>  
-html, body{  
-    margin:0;  
-    padding:0;  
-    width:100%;  
-    height:100%;  
-    overflow:hidden; /* يمنع التمرير */  
-  font-family: 'Tajawal', Arial, sans-serif; /* الخط Tajawal */  
-  /* خلفية أسود */  
-}  /* النصوص على الجنبين */
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>صورة التحدي ثابتة</title>
+<style>
+html, body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family: 'Tajawal', Arial, sans-serif;
+}
 
 .side-text{
-position:absolute;
-top:50%;
-font-size:50px;
-font-weight:bold;
-color:black;
-text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
-pointer-events:none;
-white-space: nowrap;
-transform: translateY(-50%) rotate(50deg); 
-}
-.button {
-display:inline-block;
-padding:15px 25px;
-margin:5px;
-font-size:20px;
-font-weight:bold;
-border:none;
-border-radius:8px;
-cursor:pointer;
-text-align:center;
-}
-.counter{
-display:inline-block; 
-min-width:60px;       
-text-align:left;
-font-size:40px;
-font-weight:bold;
-margin-left:15px;
-color:black;
+    position:absolute;
+    font-size:50px;
+    font-weight:bold;
+    color:black;
+    pointer-events:none;
+    white-space: nowrap;
 }
 
-
-.yellow {
-background:#FFD700;
-color:black;
-}
-
-/* أزرار حمراء */
-.red {
-background:#FF4D4D;
-color:white;
-}
-
-
-.left-buttons{
-position:absolute;
-left:3px; 
-top:calc(5% + 60px); 
-display:flex;
-flex-direction: column;
-gap:15px;
-}
-
-
-    
-.left-buttons .button {
-transform: translateY(-50%) rotate(90deg); 
-
-}
-
-
-.right-buttons{
-position:absolute;
-left:3px;
-top:calc(70% + 60px);
-display:flex;
-flex-direction: column;
-gap:15px;
-}
-
-
-.right-buttons .button {
-transform: translateY(-50%) rotate(90deg); / مثال: 15° دوران /
-} 
-
+/* نص الأولاد على الشمال */
 .left-text{
-right:20px;  
-top:150px;     
-
-/* زاوية الدوران للشمال */  
-transform: translateY(-50%) rotate(90deg); /* مثال: 15° دوران */
-
+    left:20px;
+    top:150px;
+    transform: translateY(-50%) rotate(90deg);
 }
 
-
+/* نص البنات على اليمين */
 .right-text{
-right:20px;
-top:80%;
-transform: translateY(-50%) rotate(90deg); / مثال: 15° دوران */
+    right:20px;
+    top:150px;
+    transform: translateY(-50%) rotate(90deg);
 }
 
+.counter{
+    display:inline-block;
+    min-width:60px;
+    text-align:left;
+    font-size:40px;
+    font-weight:bold;
+    margin-left:15px;
+    color:black;
+}
+
+/* أزرار */
+.button {
+    display:inline-block;
+    padding:15px 25px;
+    margin:5px;
+    font-size:20px;
+    font-weight:bold;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    text-align:center;
+}
+
+.red { background:#FF4D4D; color:white; }
+.yellow { background:#FFD700; color:black; }
+
+/* حاويات الأزرار */
+.left-buttons{
+    position:absolute;
+    left:10px;
+    top:220px;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+.right-buttons{
+    position:absolute;
+    right:10px;
+    top:220px;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+/* زر رجوع */
 .reset-button{
-position:absolute;
-top:calc(29% + 150px); /
-left:50%
-transform:translateX(-50%);
-padding:0px 1px;       
-font-size:20px;
-font-weight:bold;
-background:none;        
-border:none;            
-color:black;            
-cursor:pointer;
-z-index:10;             
+    position:absolute;
+    top:20px;
+    left:50%;
+    transform: translateX(-50%);
+    padding:10px 20px;
+    font-size:16px;
+    font-weight:bold;
+    background:#1877f2;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
 }
 
-img{
-position:absolute; 
-top:0;
-left:0;
-width:100%;
-height:100%;
-object-fit:cover;
-transition: transform 0.3s ease; 
+img {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition: transform 0.3s ease;
 }
 </style>
+</head>
+<body>
+<button class="reset-button" onclick="resetScores()">رجوع</button>
+<img src="bj.jpg" alt="challenge">
 
-</head>  
-<body>  
-<button class="reset-button" onclick="resetScores()">.</button>  
-<img src="bj.jpg" alt="challenge">  <!-- نص الرجال مع الرقم -->   
-
+<!-- نص الأولاد -->
 <div class="side-text left-text">
-  رجال <span class="counter" id="menCounter">0</span>  
-</div>  
-<!-- نص النساء مع الرقم -->  
-<div class="side-text right-text">  
-  نساء <span class="counter" id="womenCounter">0</span>  
-</div>  
-<!-- أزرار الشمال -->  
-<!-- أزرار الشمال -->  
-<<!-- أزرار الشمال -->  
-<div class="left-buttons">  
-  <button class="button red" onclick="addScore('men',1); moveImage('right',1);">+1</button>  
-  <button class="button red" onclick="addScore('men',5); moveImage('right',5);">+5</button>  
-</div>  <!-- أزرار اليمين -->  <div class="right-buttons">  
-  <button class="button yellow" onclick="addScore('women',1); moveImage('left',1);">+1</button>  
-  <button class="button yellow" onclick="addScore('women',5); moveImage('left',5);">+5</button>  
-</div>  
-<script>  
-let menScore = 0;  
-let womenScore = 0;  function addScore(team, value){
-if(team === 'men'){
-menScore += value;
-document.getElementById('menCounter').innerText = menScore;
-} else if(team === 'women'){
-womenScore += value;
-document.getElementById('womenCounter').innerText = womenScore;
-}
-}
-function resetScores(){
-menScore = 0;
-womenScore = 0;
-document.getElementById('menCounter').innerText = menScore;
-document.getElementById('womenCounter').innerText = womenScore;
-}
-let imageOffsetY = 0;
+  أولاد <span class="counter" id="boysCounter">0</span>
+</div>
 
-function moveImage(value){
-const step = 10; // كل +1 = 10px
-imageOffsetY -= step * value;
-document.querySelector('img').style.transform = translateY(${imageOffsetY}px);
+<!-- نص البنات -->
+<div class="side-text right-text">
+  بنات <span class="counter" id="girlsCounter">0</span>
+</div>
+
+<!-- أزرار الأولاد -->
+<div class="left-buttons">
+    <button class="button red" onclick="addScore('boys',1); moveImage('down',1);">+1</button>
+    <button class="button red" onclick="addScore('boys',5); moveImage('down',5);">+5</button>
+</div>
+
+<!-- أزرار البنات -->
+<div class="right-buttons">
+    <button class="button yellow" onclick="addScore('girls',1); moveImage('up',1);">+1</button>
+    <button class="button yellow" onclick="addScore('girls',5); moveImage('up',5);">+5</button>
+</div>
+
+<script>
+let boysScore = 0;
+let girlsScore = 0;
+let imageOffsetY = 0;
+const maxUp = -340;
+const maxDown = 300;
+
+function addScore(team, value){
+    if(team === 'boys'){
+        boysScore += value;
+        document.getElementById('boysCounter').innerText = boysScore;
+    } else if(team === 'girls'){
+        girlsScore += value;
+        document.getElementById('girlsCounter').innerText = girlsScore;
+    }
+}
+
+function resetScores(){
+    boysScore = 0;
+    girlsScore = 0;
+    document.getElementById('boysCounter').innerText = 0;
+    document.getElementById('girlsCounter').innerText = 0;
+
+    const img = document.querySelector('img');
+    img.style.transition = "transform 1.5s ease";
+    imageOffsetY = 0;
+    img.style.transform = `translateY(0px)`;
+    setTimeout(() => {
+        img.style.transition = "transform 0.3s ease";
+    }, 1500);
+}
+
+function moveImage(direction, value){
+    const step = 10;
+    if(direction === 'up'){
+        imageOffsetY -= step * value;
+        if(imageOffsetY < maxUp) imageOffsetY = maxUp;
+    } else if(direction === 'down'){
+        imageOffsetY += step * value;
+        if(imageOffsetY > maxDown) imageOffsetY = maxDown;
+    }
+    document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
+}
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
 }
 </script>
-
-</body>  
+</body>
 </html>
