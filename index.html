@@ -43,35 +43,36 @@ html, body{
 }
 
 /* أزرار صفراء */
+
+/* أزرار صفراء */
 .yellow {
-    background:#FFD700; /* أصفر */
+    background:#FFD700;
     color:black;
 }
 
 /* أزرار حمراء */
 .red {
-    background:#FF4D4D; /* أحمر */
+    background:#FF4D4D;
     color:white;
 }
 
-/* موقع الأزرار */
+/* المربعات تحت النصوص */
 .left-buttons{
-    
-    right:20px;
-    top:80px; 
-    /* زاوية الدوران لليمين */
-    transform: translateY(-50%) rotate(90deg); /* مثال: 15° دوران */
-    
-    
+    position:absolute;
+    left:50px; /* نفس مكان النص */
+    top:calc(30% + 60px); /* تحت النص مباشرة */
+    display:flex;
+    flex-direction: column;
 }
+
 .right-buttons{
-    
-    right:20px;
-    top:80%; 
-    /* زاوية الدوران لليمين */
-    transform: translateY(-50%) rotate(90deg); /* مثال: 15° دوران */
-    
+    position:absolute;
+    right:50px; /* نفس مكان النص */
+    top:calc(30% + 60px); /* تحت النص مباشرة */
+    display:flex;
+    flex-direction: column;
 }
+
 
 
 /* نص على الشمال */
