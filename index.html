@@ -127,18 +127,34 @@ transition: transform 0.3s ease;
 
 </head>  
 <body>  
+<!-- زر الرجوع -->
 <button class="reset-button" onclick="resetScores()">رجوع</button>  
-<img src="bj.jpg" alt="challenge">  <!-- نص الأولاد -->  <div class="side-text left-text">  
+
+<!-- الصورة -->
+<img src="bj.jpg" alt="challenge">
+
+<!-- نص الأولاد -->
+<div class="side-text left-text">  
   أولاد <span class="counter" id="boysCounter">0</span>  
-</div>  <!-- نص البنات -->  <div class="side-text right-text">  
+</div>  
+
+<!-- نص البنات -->
+<div class="side-text right-text">  
   بنات <span class="counter" id="girlsCounter">0</span>  
-</div>  <!-- أزرار الأولاد -->  <div class="left-buttons">  
-    <button class="button red" onclick="addScore('boys',1); moveImage('down',1);">+1</button>  
-    <button class="button red" onclick="addScore('boys',5); moveImage('down',5);">+5</button>  
-</div>  <!-- أزرار البنات -->  <div class="right-buttons">  
-    <button class="button yellow" onclick="addScore('girls',1); moveImage('up',1);">+1</button>  
-    <button class="button yellow" onclick="addScore('girls',5); moveImage('up',5);">+5</button>  
-</div>  <script>  
+</div>  
+
+<!-- أزرار الأولاد -->
+<div class="left-buttons">  
+  <button class="button red" onclick="addScore('boys',1); moveImage('down',1);">+1</button>  
+  <button class="button red" onclick="addScore('boys',5); moveImage('down',5);">+5</button>  
+</div>  
+
+<!-- أزرار البنات -->
+<div class="right-buttons">  
+  <button class="button yellow" onclick="addScore('girls',1); moveImage('up',1);">+1</button>  
+  <button class="button yellow" onclick="addScore('girls',5); moveImage('up',5);">+5</button>  
+</div>
+<script>  
 let boysScore = 0;  
 let girlsScore = 0;  
 let imageOffsetY = 0;  
@@ -185,5 +201,6 @@ function moveImage(direction, value){
 if ("serviceWorker" in navigator) {  
   navigator.serviceWorker.register("sw.js");  
 }  
-</script>  </body>  
+</script> 
+</body>  
 </html>  
