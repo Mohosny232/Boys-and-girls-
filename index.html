@@ -82,17 +82,27 @@ gap:10px;
 /* زر رجوع */
 .reset-button{
 position:absolute;
-top:20px;
-left:50%;
-transform: translateX(-50%);
-padding:10px 20px;
-font-size:16px;
-font-weight:bold;
-background:#1877f2;
-color:white;
-border:none;
-border-radius:5px;
-cursor:pointer;
+top:calc(31% + 150px);
+left:10px;
+transform: translateY(-50%) rotate(90deg);
+
+padding:5px 13px;              /* حجم مناسب */  
+font-size:13px;  
+font-weight:bold;  
+
+background:#1877f2;             /* أزرق احترافي */  
+color:white;                    /* النص أبيض */  
+
+border:none;  
+border-left:5px solid #0d5ed7;  /* حافة جانبية */  
+border-right:5px solid #0d5ed7; /* حافة جانبية */  
+
+border-radius:5px;              /* حواف ناعمة */  
+cursor:pointer;  
+z-index:10;  
+
+transition:0.3s;
+
 }
 
 img {
