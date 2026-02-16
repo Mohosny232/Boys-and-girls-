@@ -3,10 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
-<link rel="manifest" href="manifest.json">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#1877f2">
-<meta name="mobile-web-app-capable" content="yes">
 <title>صورة التحدي ثابتة</title>
 <style>
 html, body{
@@ -14,24 +11,44 @@ html, body{
     padding:0;
     width:100%;
     height:100%;
-    overflow:hidden; /* يمنع التمرير */
-  font-family: 'Tajawal', Arial, sans-serif; /* الخط Tajawal */
-  /* خلفية أسود */
+    overflow:hidden;
+    font-family: 'Tajawal', Arial, sans-serif;
 }
-
-   /* النصوص على الجنبين */
 
 .side-text{
     position:absolute;
-    top:50%;
     font-size:50px;
     font-weight:bold;
     color:black;
-    text-shadow: none;
     pointer-events:none;
     white-space: nowrap;
-    transform: translateY(-50%) rotate(50deg); /* هنا تتحكم في الدوران */
 }
+
+/* نص الأولاد على الشمال */
+.left-text{
+    left:20px;
+    top:150px;
+    transform: translateY(-50%) rotate(90deg);
+}
+
+/* نص البنات على اليمين */
+.right-text{
+    right:20px;
+    top:150px;
+    transform: translateY(-50%) rotate(90deg);
+}
+
+.counter{
+    display:inline-block;
+    min-width:60px;
+    text-align:left;
+    font-size:40px;
+    font-weight:bold;
+    margin-left:15px;
+    color:black;
+}
+
+/* أزرار */
 .button {
     display:inline-block;
     padding:15px 25px;
@@ -43,114 +60,52 @@ html, body{
     cursor:pointer;
     text-align:center;
 }
-.counter{
-    display:inline-block; /* يخلي الرقم عنصر مستقل */
-    min-width:60px;       /* عرض ثابت للرقم */
-    text-align:left;
-    font-size:40px;
-    font-weight:bold;
-    margin-left:15px;
-    color:black;
-}
-/* أزرار صفراء */
 
-/* أزرار صفراء */
-.yellow {
-    background:#FFD700;
-    color:black;
-}
+.red { background:#FF4D4D; color:white; }
+.yellow { background:#FFD700; color:black; }
 
-/* أزرار حمراء */
-.red {
-    background:#FF4D4D;
-    color:white;
-}
-
-/* المربعات تحت النصوص */
+/* حاويات الأزرار */
 .left-buttons{
     position:absolute;
-    left:3px; /* نفس مكان النص */
-    top:calc(5% + 60px); /* تحت النص مباشرة */
+    left:10px;
+    top:220px;
     display:flex;
     flex-direction: column;
-gap:15px;
+    gap:10px;
 }
-
-/* مثال: دوران كل زر داخل الشمال */
-.left-buttons .button {
-    transform: translateY(-50%) rotate(90deg); /* مثال: 15° دوران */
-/* غيّر الرقم حسب الزاوية اللي تحب */
-}
-
-/* الأزرار على اليمين */
 .right-buttons{
     position:absolute;
-    left:3px; /* نفس مكان النص */
-    top:calc(70% + 60px);
+    right:10px;
+    top:220px;
     display:flex;
     flex-direction: column;
-gap:15px;
-}
-    
-
-/* مثال: دوران كل زر داخل اليمين */
-.right-buttons .button {
-    transform: translateY(-50%) rotate(90deg); /* مثال: 15° دوران */
-} /* غيّر الرقم حسب الزاوية */
-
-
-
-
-/* نص على الشمال */
-.left-text{
-    right:20px;   /* المسافة من اليسار */
-    top:150px;     /* الارتفاع من أعلى الصفحة */
-   
-    /* زاوية الدوران للشمال */
-    transform: translateY(-50%) rotate(90deg); /* مثال: 15° دوران */
+    gap:10px;
 }
 
-/* نص على اليمين */
-.right-text{
-    right:20px;
-    top:80%; 
-    /* زاوية الدوران لليمين */
-    transform: translateY(-50%) rotate(90deg); /* مثال: 15° دوران */
-}
-
+/* زر رجوع */
 .reset-button{
     position:absolute;
-    top:calc(31% + 150px);
-    left:10px;
-    transform: translateY(-50%) rotate(90deg);
-
-    padding:5px 13px;              /* حجم مناسب */
-    font-size:13px;
+    top:20px;
+    left:50%;
+    transform: translateX(-50%);
+    padding:10px 20px;
+    font-size:16px;
     font-weight:bold;
-
-    background:#1877f2;             /* أزرق احترافي */
-    color:white;                    /* النص أبيض */
-
+    background:#1877f2;
+    color:white;
     border:none;
-    border-left:5px solid #0d5ed7;  /* حافة جانبية */
-    border-right:5px solid #0d5ed7; /* حافة جانبية */
-
-    border-radius:5px;              /* حواف ناعمة */
+    border-radius:5px;
     cursor:pointer;
-    z-index:10;
-
-    transition:0.3s;
 }
- 
+
 img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
     transition: transform 0.3s ease;
-    transform: translateY(-30px); /* هنا ترفع الصورة 30px */
 }
 </style>
 </head>
@@ -168,18 +123,24 @@ img {
   بنات <span class="counter" id="girlsCounter">0</span>
 </div>
 
-<!-- أزرار الأولاد (يسار) -->
-<button class="button red" onclick="addScore('boys',1); moveImage('down',1);">+1</button>
-<button class="button red" onclick="addScore('boys',5); moveImage('down',5);">+5</button>
+<!-- أزرار الأولاد -->
+<div class="left-buttons">
+    <button class="button red" onclick="addScore('boys',1); moveImage('down',1);">+1</button>
+    <button class="button red" onclick="addScore('boys',5); moveImage('down',5);">+5</button>
+</div>
 
-<!-- أزرار البنات (يمين) -->
-<button class="button yellow" onclick="addScore('girls',1); moveImage('up',1);">+1</button>
-<button class="button yellow" onclick="addScore('girls',5); moveImage('up',5);">+5</button>
-
+<!-- أزرار البنات -->
+<div class="right-buttons">
+    <button class="button yellow" onclick="addScore('girls',1); moveImage('up',1);">+1</button>
+    <button class="button yellow" onclick="addScore('girls',5); moveImage('up',5);">+5</button>
+</div>
 
 <script>
 let boysScore = 0;
 let girlsScore = 0;
+let imageOffsetY = 0;
+const maxUp = -340;
+const maxDown = 300;
 
 function addScore(team, value){
     if(team === 'boys'){
@@ -194,7 +155,6 @@ function addScore(team, value){
 function resetScores(){
     boysScore = 0;
     girlsScore = 0;
-
     document.getElementById('boysCounter').innerText = 0;
     document.getElementById('girlsCounter').innerText = 0;
 
@@ -207,31 +167,21 @@ function resetScores(){
     }, 1500);
 }
 
-
-
-let imageOffsetY = 0;
-
-// هنا نتحكم في الحد الأعلى والأدنى اللي توقف عنده الصورة
-const maxUp = -340;   // الصورة لا تتحرك لأعلى أكثر من 200px
-const maxDown = 300;    // الصورة لا تتحرك لأسفل أكثر من الموقع الأصلي
-
 function moveImage(direction, value){
-    const step = 10; // كل +1 = 10px
+    const step = 10;
     if(direction === 'up'){
         imageOffsetY -= step * value;
-        if(imageOffsetY < maxUp) imageOffsetY = maxUp; // لا تتجاوز الحد الأعلى
+        if(imageOffsetY < maxUp) imageOffsetY = maxUp;
     } else if(direction === 'down'){
         imageOffsetY += step * value;
-        if(imageOffsetY > maxDown) imageOffsetY = maxDown; // لا تتجاوز الحد الأسفل
+        if(imageOffsetY > maxDown) imageOffsetY = maxDown;
     }
-
     document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
 }
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js");
 }
-
 </script>
 </body>
 </html>
