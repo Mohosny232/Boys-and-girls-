@@ -15,28 +15,37 @@ html, body{
     font-family: 'Tajawal', Arial, sans-serif;
 }
 
+
 .side-text{
-    position:absolute;
-    font-size:50px;
-    font-weight:bold;
-    color:black;
-    pointer-events:none;
-    white-space: nowrap;
+position:absolute;
+top:50%;
+font-size:50px;
+font-weight:bold;
+color:black;
+text-shadow: none;
+pointer-events:none;
+white-space: nowrap;
+transform: translateY(-50%) rotate(50deg); /* هنا تتحكم في الدوران /
 }
 
 /* نص الأولاد على الشمال */
 .left-text{
-    left:20px;
-    top:150px;
-    transform: translateY(-50%) rotate(90deg);
+right:20px;  
+top:150px;     
+
+
+transform: translateY(-50%) rotate(90deg); 
+
 }
 
-/* نص البنات على اليمين */
+
 .right-text{
-    right:20px;
-    top:150px;
-    transform: translateY(-50%) rotate(90deg);
+right:20px;
+top:80%;
+
+transform: translateY(-50%) rotate(90deg); 
 }
+
 
 .counter{
     display:inline-block;
