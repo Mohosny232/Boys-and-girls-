@@ -194,14 +194,23 @@ function addScore(team, value){
     function resetScores(){
     menScore = 0;
     womenScore = 0;
-  
-    document.getElementById('menCounter').innerText = menScore;
-    document.getElementById('womenCounter').innerText = womenScore;
 
-    // 👇 إضافة مهمة
+    document.getElementById('menCounter').innerText = 0;
+    document.getElementById('womenCounter').innerText = 0;
+
+    const img = document.querySelector('img');
+
+    // 👇 نخلي الرجوع أبطأ
+    img.style.transition = "transform 1.5s ease";
+
     imageOffsetY = 0;
-    document.querySelector('img').style.transform = `translateY(0px)`;
-}
+    img.style.transform = `translateY(0px)`;
+
+    // 👇 بعد ما يرجع نرجّع السرعة العادية
+    setTimeout(() => {
+        img.style.transition = "transform 0.3s ease";
+    }, 1500);
+    }
 
 
 
