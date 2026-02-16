@@ -138,7 +138,7 @@ img{
     width:100%;
     height:100%;
     object-fit:cover;
-    transition: transform 0.3s ease; /* حركة سلسة */
+    transition: transform 0.5s ease; /* حركة سلسة */
 }
 </style>
 </head>
@@ -167,7 +167,6 @@ img{
   <button class="button yellow" onclick="addScore('women',1); moveImage('left',1);">+1</button>
   <button class="button yellow" onclick="addScore('women',5); moveImage('left',5);">+5</button>
 </div>
-
 <script>
 let menScore = 0;
 let womenScore = 0;
@@ -187,12 +186,13 @@ function addScore(team, value){
     document.getElementById('menCounter').innerText = menScore;
     document.getElementById('womenCounter').innerText = womenScore;
   }
-let imageOffsetY = 0; // قيمة التحريك للأعلى
+let imageOffsetY = 0; // قيمة تحريك الصورة للأعلى
 
 function moveImage(value){
-    // كل ضغط يحرك الصورة للأعلى
-    imageOffsetY -= value; 
-    document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
+    // value = الرقم اللي جاي من الزر (+1 أو +5)
+    const step = 2; // كل +1 = 2% حركة للأعلى
+    imageOffsetY -= step * value; // لو +5 → 2 * 5 = 10% للأعلى
+    document.querySelector('img').style.transform = `translateY(${imageOffsetY}%)`;
 }
 </script>
 </body>
