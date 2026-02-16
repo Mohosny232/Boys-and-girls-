@@ -153,12 +153,17 @@ img{
 
 <!-- أزرار الشمال -->
 <!-- أزرار الشمال -->
-<button class="button red" onclick="addScore('men',1); moveImage('right',1);">+1</button>
-<button class="button red" onclick="addScore('men',5); moveImage('right',5);">+5</button>
+<<!-- أزرار الشمال -->
+<div class="left-buttons">
+  <button class="button red" onclick="addScore('men',1); moveImage('right',1);">+1</button>
+  <button class="button red" onclick="addScore('men',5); moveImage('right',5);">+5</button>
+</div>
 
 <!-- أزرار اليمين -->
-<button class="button yellow" onclick="addScore('women',1); moveImage('left',1);">+1</button>
-<button class="button yellow" onclick="addScore('women',5); moveImage('left',5);">+5</button>
+<div class="right-buttons">
+  <button class="button yellow" onclick="addScore('women',1); moveImage('left',1);">+1</button>
+  <button class="button yellow" onclick="addScore('women',5); moveImage('left',5);">+5</button>
+</div>
 
 <script>
 let menScore = 0;
