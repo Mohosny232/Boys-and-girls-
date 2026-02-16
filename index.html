@@ -184,15 +184,11 @@ function addScore(team, value){
     document.getElementById('menCounter').innerText = menScore;
     document.getElementById('womenCounter').innerText = womenScore;
   }
-    let imageOffset = 0; // قيمة التحريك بالـ px أو نسبة
+let imageOffsetY = 0; // قيمة تحريك الصورة للأعلى
 
-function moveImage(direction, value){
-    if(direction === 'left'){ // ضغط على زر من اليمين → الصورة تتحرك شمال
-        imageOffset -= value; 
-    } else if(direction === 'right'){ // زر من الشمال → الصورة تتحرك يمين
-        imageOffset += value;
-    }
-    document.querySelector('img').style.transform = `translateX(${imageOffset}px)`;
+function moveImage(value){
+    imageOffsetY -= value; // كل ضغط يحرك الصورة للأعلى
+    document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
 }
 </script>
 </body>
