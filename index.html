@@ -2,8 +2,7 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- استدعاء خط Tajawal من Google Fonts -->
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover"><!-- استدعاء خط Tajawal من Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1877f2">
@@ -143,14 +142,14 @@ gap:15px;
     transition:0.3s;
 }
  
-img{
-    position:absolute; /* بدل fixed */
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition: transform 0.3s ease; /* حركة سلسة */
+img {
+    position: fixed;
+    top: env(safe-area-inset-top); /* يحسب مساحة شريط الحالة */
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - env(safe-area-inset-top));
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 </style>
 </head>
