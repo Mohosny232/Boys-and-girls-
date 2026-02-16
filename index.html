@@ -184,10 +184,11 @@ function addScore(team, value){
     document.getElementById('menCounter').innerText = menScore;
     document.getElementById('womenCounter').innerText = womenScore;
   }
-let imageOffsetY = 0; // قيمة تحريك الصورة للأعلى
+let imageOffsetY = 0; // قيمة التحريك للأعلى
 
 function moveImage(value){
-    imageOffsetY -= value; // كل ضغط يحرك الصورة للأعلى
+    // كل ضغط يحرك الصورة للأعلى
+    imageOffsetY -= value; 
     document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
 }
 </script>
