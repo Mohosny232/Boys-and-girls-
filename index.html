@@ -60,18 +60,29 @@ html, body{
 .left-buttons{
     position:absolute;
     left:50px; /* نفس مكان النص */
-    top:calc(30% + 60px); /* تحت النص مباشرة */
+    top:calc(30% + 90px); /* تحت النص مباشرة */
     display:flex;
     flex-direction: column;
 }
 
+/* مثال: دوران كل زر داخل الشمال */
+.left-buttons .button {
+    transform: rotate(90deg); /* غيّر الرقم حسب الزاوية اللي تحب */
+}
+
+/* الأزرار على اليمين */
 .right-buttons{
     position:absolute;
     right:50px; /* نفس مكان النص */
-    top:calc(30% + 60px); /* تحت النص مباشرة */
+    top:calc(30% + 60px);
     display:flex;
     flex-direction: column;
 }
+
+/* مثال: دوران كل زر داخل اليمين */
+.right-buttons .button {
+    transform: rotate(90deg); /* غيّر الرقم حسب الزاوية */
+
 
 
 
