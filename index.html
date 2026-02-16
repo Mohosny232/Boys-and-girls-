@@ -158,62 +158,54 @@ img {
 <button class="reset-button" onclick="resetScores()">رجوع</button>
 <img src="bj.jpg" alt="challenge">
 
-<!-- نص الرجال مع الرقم -->
-<div class="side-text right-text">
-  اولاد <span class="counter" id="womenCounter">0</span>
-</div>
-<!-- نص النساء مع الرقم -->
-<div class="side-text right-text">
-  بنات <span class="counter" id="womenCounter">0</span>
-</div>
-<!-- أزرار الشمال -->
-
-<!-- أزرار الشمال (أحمر) -->
-<div class="left-buttons">
-  <button class="button red" onclick="addScore('men',1); moveImage('down',1);">+1</button>
-  <button class="button red" onclick="addScore('men',5); moveImage('down',5);">+5</button>
+<!-- نص الأولاد -->
+<div class="side-text left-text">
+  أولاد <span class="counter" id="boysCounter">0</span>
 </div>
 
-<!-- أزرار اليمين (أصفر) -->
-<div class="right-buttons">
-  <button class="button yellow" onclick="addScore('women',1); moveImage('up',1);">+1</button>
-  <button class="button yellow" onclick="addScore('women',5); moveImage('up',5);">+5</button>
+<!-- نص البنات -->
+<div class="side-text right-text">
+  بنات <span class="counter" id="girlsCounter">0</span>
 </div>
+
+<!-- أزرار الأولاد (يسار) -->
+<button class="button red" onclick="addScore('boys',1); moveImage('down',1);">+1</button>
+<button class="button red" onclick="addScore('boys',5); moveImage('down',5);">+5</button>
+
+<!-- أزرار البنات (يمين) -->
+<button class="button yellow" onclick="addScore('girls',1); moveImage('up',1);">+1</button>
+<button class="button yellow" onclick="addScore('girls',5); moveImage('up',5);">+5</button>
 
 
 <script>
-let menScore = 0;
-let womenScore = 0;
+let boysScore = 0;
+let girlsScore = 0;
 
 function addScore(team, value){
-    if(team === 'men'){
-        menScore += value;
-        document.getElementById('menCounter').innerText = menScore;
-    } else if(team === 'women'){
-        womenScore += value;
-        document.getElementById('womenCounter').innerText = womenScore;
+    if(team === 'boys'){
+        boysScore += value;
+        document.getElementById('boysCounter').innerText = boysScore;
+    } else if(team === 'girls'){
+        girlsScore += value;
+        document.getElementById('girlsCounter').innerText = girlsScore;
     }
 }
-    function resetScores(){
-    menScore = 0;
-    womenScore = 0;
 
-    document.getElementById('menCounter').innerText = 0;
-    document.getElementById('womenCounter').innerText = 0;
+function resetScores(){
+    boysScore = 0;
+    girlsScore = 0;
+
+    document.getElementById('boysCounter').innerText = 0;
+    document.getElementById('girlsCounter').innerText = 0;
 
     const img = document.querySelector('img');
-
-    // 👇 نخلي الرجوع أبطأ
     img.style.transition = "transform 1.5s ease";
-
     imageOffsetY = 0;
     img.style.transform = `translateY(0px)`;
-
-    // 👇 بعد ما يرجع نرجّع السرعة العادية
     setTimeout(() => {
         img.style.transition = "transform 0.3s ease";
     }, 1500);
-    }
+}
 
 
 
