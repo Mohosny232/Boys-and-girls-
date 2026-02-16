@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- استدعاء خط Tajawal من Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1877f2">
 <title>صورة التحدي ثابتة</title>
 <style>
 html, body{
@@ -231,6 +233,10 @@ function moveImage(direction, value){
     }
 
     document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
+}
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
 }
 
 </script>
