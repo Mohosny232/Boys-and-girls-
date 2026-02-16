@@ -194,9 +194,14 @@ function addScore(team, value){
     function resetScores(){
     menScore = 0;
     womenScore = 0;
+  
     document.getElementById('menCounter').innerText = menScore;
     document.getElementById('womenCounter').innerText = womenScore;
-  }
+
+    // 👇 إضافة مهمة
+    imageOffsetY = 0;
+    document.querySelector('img').style.transform = `translateY(0px)`;
+}
 
 
 
