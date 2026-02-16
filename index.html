@@ -193,13 +193,20 @@ function addScore(team, value){
 
 let imageOffsetY = 0;
 
+// هنا نتحكم في الحد الأعلى والأدنى اللي توقف عنده الصورة
+const maxUp = -200;   // الصورة لا تتحرك لأعلى أكثر من 200px
+const maxDown = 0;    // الصورة لا تتحرك لأسفل أكثر من الموقع الأصلي
+
 function moveImage(direction, value){
     const step = 10; // كل +1 = 10px
     if(direction === 'up'){
-        imageOffsetY -= step * value; // تتحرك للأعلى
+        imageOffsetY -= step * value;
+        if(imageOffsetY < maxUp) imageOffsetY = maxUp; // لا تتجاوز الحد الأعلى
     } else if(direction === 'down'){
-        imageOffsetY += step * value; // تتحرك للأسفل
+        imageOffsetY += step * value;
+        if(imageOffsetY > maxDown) imageOffsetY = maxDown; // لا تتجاوز الحد الأسفل
     }
+
     document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
 }
 
