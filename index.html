@@ -155,18 +155,18 @@ img{
   نساء <span class="counter" id="womenCounter">0</span>
 </div>
 <!-- أزرار الشمال -->
-<!-- أزرار الشمال -->
-<<!-- أزرار الشمال -->
+
 <div class="left-buttons">
-  <button class="button red" onclick="addScore('men',1); moveImage('right',1);">+1</button>
-  <button class="button red" onclick="addScore('men',5); moveImage('right',5);">+5</button>
+  <button class="button red" onclick="addScore('men',1); moveImage(1);">+1</button>
+  <button class="button red" onclick="addScore('men',5); moveImage(5);">+5</button>
 </div>
 
 <!-- أزرار اليمين -->
 <div class="right-buttons">
-  <button class="button yellow" onclick="addScore('women',1); moveImage('left',1);">+1</button>
-  <button class="button yellow" onclick="addScore('women',5); moveImage('left',5);">+5</button>
+  <button class="button yellow" onclick="addScore('women',1); moveImage(1);">+1</button>
+  <button class="button yellow" onclick="addScore('women',5); moveImage(5);">+5</button>
 </div>
+
 <script>
 let menScore = 0;
 let womenScore = 0;
@@ -186,6 +186,7 @@ function addScore(team, value){
     document.getElementById('menCounter').innerText = menScore;
     document.getElementById('womenCounter').innerText = womenScore;
   }
+<script>
 let imageOffsetY = 0;
 
 function moveImage(value){
@@ -193,6 +194,7 @@ function moveImage(value){
     imageOffsetY -= step * value;
     document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
 }
+
 </script>
 </body>
 </html>
