@@ -156,16 +156,18 @@ img{
 </div>
 <!-- أزرار الشمال -->
 
+<!-- أزرار الشمال (أحمر) -->
 <div class="left-buttons">
-  <button class="button red" onclick="addScore('men',1); moveImage(1);">+1</button>
-  <button class="button red" onclick="addScore('men',5); moveImage(5);">+5</button>
+  <button class="button red" onclick="addScore('men',1); moveImage('down',1);">+1</button>
+  <button class="button red" onclick="addScore('men',5); moveImage('down',5);">+5</button>
 </div>
 
-<!-- أزرار اليمين -->
+<!-- أزرار اليمين (أصفر) -->
 <div class="right-buttons">
-  <button class="button yellow" onclick="addScore('women',1); moveImage(1);">+1</button>
-  <button class="button yellow" onclick="addScore('women',5); moveImage(5);">+5</button>
+  <button class="button yellow" onclick="addScore('women',1); moveImage('up',1);">+1</button>
+  <button class="button yellow" onclick="addScore('women',5); moveImage('up',5);">+5</button>
 </div>
+
 
 <script>
 let menScore = 0;
@@ -187,11 +189,17 @@ function addScore(team, value){
     document.getElementById('womenCounter').innerText = womenScore;
   }
 
+
+
 let imageOffsetY = 0;
 
-function moveImage(value){
-    const step = 10; // كل +1 = 10px للأعلى
-    imageOffsetY -= step * value;
+function moveImage(direction, value){
+    const step = 10; // كل +1 = 10px
+    if(direction === 'up'){
+        imageOffsetY -= step * value; // تتحرك للأعلى
+    } else if(direction === 'down'){
+        imageOffsetY += step * value; // تتحرك للأسفل
+    }
     document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
 }
 
