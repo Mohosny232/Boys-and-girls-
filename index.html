@@ -124,19 +124,41 @@ img{
 
 <img src="bj.jpg" alt="challenge">
 
-<div class="side-text left-text">رجال</div>
-<div class="side-text right-text">نساء</div>
+<!-- نص الرجال مع الرقم -->
+<div class="side-text left-text">
+  رجال <span class="counter" id="menCounter">0</span>
+</div>
 
-    <!-- أزرار الشمال -->
-    <div class="left-buttons">
-        <button class="button red">+1</button>
-        <button class="button red">+5</button>
-    </div>
+<!-- أزرار الشمال -->
+<div class="left-buttons">
+    <button class="button red" onclick="addScore('men',1)">+1</button>
+    <button class="button red" onclick="addScore('men',5)">+5</button>
+</div>
+
+<!-- نص النساء مع الرقم -->
+<div class="side-text right-text">
+  نساء <span class="counter" id="womenCounter">0</span>
+</div>
+
 <!-- أزرار اليمين -->
-    <div class="right-buttons">
-        <button class="button yellow">+1</button>
-        <button class="button yellow">+5</button>
-        
-    </div>
+<div class="right-buttons">
+    <button class="button yellow" onclick="addScore('women',1)">+1</button>
+    <button class="button yellow" onclick="addScore('women',5)">+5</button>
+</div>
+
+<script>
+let menScore = 0;
+let womenScore = 0;
+
+function addScore(team, value){
+    if(team === 'men'){
+        menScore += value;
+        document.getElementById('menCounter').innerText = menScore;
+    } else if(team === 'women'){
+        womenScore += value;
+        document.getElementById('womenCounter').innerText = womenScore;
+    }
+}
+</script>
 </body>
 </html>
