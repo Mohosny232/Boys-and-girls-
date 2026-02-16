@@ -13,14 +13,19 @@ html, body{
     height:100%;  
     overflow:auto;  
     font-family: 'Tajawal', Arial, sans-serif;  
-}  .side-text{
+}  
+    
+.side-text{
 position:absolute;
+top:50%;
 font-size:50px;
 font-weight:bold;
 color:black;
+text-shadow: none;
 pointer-events:none;
 white-space: nowrap;
-}
+transform: translateY(-50%) rotate(50deg); /* هنا تتحكم في الدوران /
+    }
 
 /* نص الأولاد على الشمال */
 .left-text{
