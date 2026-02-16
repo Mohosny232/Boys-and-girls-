@@ -65,22 +65,32 @@ html, body{
 .yellow { background:#FFD700; color:black; }
 
 .left-buttons{
-    position:absolute;
-    left:10px;
-    top:220px;
-    display:flex;
-    flex-direction: column;
-    gap:10px;
+position:absolute;
+left:3px; 
+top:calc(5% + 60px); 
+display:flex;
+flex-direction: column;
+gap:15px;
+}
+
+.left-buttons .button {
+transform: translateY(-50%) rotate(90deg); 
 }
 
 .right-buttons{
-    position:absolute;
-    right:10px;
-    top:220px;
-    display:flex;
-    flex-direction: column;
-    gap:10px;
+position:absolute;
+left:3px; 
+top:calc(70% + 60px);
+display:flex;
+flex-direction: column;
+gap:15px;
 }
+
+.right-buttons .button {
+transform: translateY(-50%) rotate(90deg);
+
+} 
+
 
 /* زر رجوع */
 .reset-button{
