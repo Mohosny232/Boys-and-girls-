@@ -144,10 +144,10 @@ gap:15px;
  
 img {
     position: fixed;
-    top: env(safe-area-inset-top); /* يحسب مساحة شريط الحالة */
+    top: -50px; /* تحرك الصورة للأعلى 50px */
     left: 0;
-    width: 100vw;
-    height: calc(100vh - env(safe-area-inset-top));
+    width: 100%;
+    height: calc(100% + 50px); /* تعوّض عن الرفع */
     object-fit: cover;
     transition: transform 0.3s ease;
 }
