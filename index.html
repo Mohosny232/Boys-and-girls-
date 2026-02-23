@@ -189,7 +189,7 @@ z-index:20;
   <button class="button yellow" onclick="addScore('girls',1); moveImage('up',1);">+1</button>  
   <button class="button yellow" onclick="addScore('girls',5); moveImage('up',5);">+5</button>  
 </div>
-
+<audio id="clickSound" src="click.m4a"></audio>
 <script>
 let boysScore = 0;
 let girlsScore = 0;
@@ -198,6 +198,10 @@ const maxUp = -340;
 const maxDown = 300;
 
 function addScore(team, value){
+    // تشغيل صوت الضغط
+    document.getElementById('clickSound').currentTime = 0; // يبدأ من أول الملف
+    document.getElementById('clickSound').play();
+
     if(team === 'boys'){
         boysScore += value;
         document.getElementById('boysCounter').innerText = boysScore;
