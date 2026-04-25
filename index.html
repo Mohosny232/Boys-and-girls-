@@ -210,15 +210,18 @@ setTimeout(() => {
 }
 
 function moveImage(direction, value){
-const step = 10;
-if(direction === 'up'){
-imageOffsetY -= step * value;
-if(imageOffsetY < maxUp) imageOffsetY = maxUp;
-} else if(direction === 'down'){
-imageOffsetY += step * value;
-if(imageOffsetY > maxDown) imageOffsetY = maxDown;
-}
-document.querySelector('img').style.transform = translateY(${imageOffsetY}px);
+    const step = 10;
+
+    if(direction === 'up'){
+        imageOffsetY -= step * value;
+        if(imageOffsetY < maxUp) imageOffsetY = maxUp;
+    } 
+    else if(direction === 'down'){
+        imageOffsetY += step * value;
+        if(imageOffsetY > maxDown) imageOffsetY = maxDown;
+    }
+
+    document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
 }
 function checkWinner(){
 if(boysScore >= 100){
