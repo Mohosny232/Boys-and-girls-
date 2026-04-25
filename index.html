@@ -199,7 +199,7 @@ const maxDown = 300;
 
 function addScore(team, value){
     // تشغيل صوت الضغط
-    document.getElementById('clickSound').currentTime = 0; // يبدأ من أول الملف
+    document.getElementById('clickSound').currentTime = 0;
     document.getElementById('clickSound').play();
 
     if(team === 'boys'){
@@ -209,6 +209,9 @@ function addScore(team, value){
         girlsScore += value;
         document.getElementById('girlsCounter').innerText = girlsScore;
     }
+
+    // 🔥 هنا المهم
+    checkWinner();
 }
 
 function resetScores(){
@@ -237,7 +240,21 @@ function moveImage(direction, value){
     }
     document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
 }
+function checkWinner(){
+    if(boysScore >= 100){
+        setTimeout(() => {
+            alert("🎉 تهانينا! فوز الشباب 🔥");
+            resetScores();
+        }, 100);
+    }
 
+    if(girlsScore >= 100){
+        setTimeout(() => {
+            alert("🎉 تهانينا! فوز البنات 💛");
+            resetScores();
+        }, 100);
+    }
+}
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js")
     .then(() => console.log("Service Worker Registered"));
