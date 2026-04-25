@@ -141,23 +141,23 @@ transition:0.3s;
 }
 
 #winnerText{
-    background:white;
-    color:black;
-
     display:flex;
-    flex-direction:row;   /* ده اللي بيخليها بالعرض */
+    flex-direction:row; /* مهم للعرض */
     align-items:center;
     justify-content:center;
-
     gap:10px;
+
+    background:white;
+    color:black;
 
     padding:10px 15px;
     border-radius:10px;
 
-    font-size:20px;
+    font-size:20px; /* صغير */
     font-weight:bold;
 
-    white-space:nowrap;   /* يمنع الكسر */
+    max-width:50%;
+   transform: rotate(90deg);
 }
 img{
 position:absolute;
