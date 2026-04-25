@@ -246,11 +246,22 @@ function checkWinner(){
         }, 600);
     }
 }
+function showWinner(text){
+    const screen = document.getElementById('winnerScreen');
+    const textEl = document.getElementById('winnerText');
 
+    textEl.innerText = text;
+    screen.style.display = 'flex';
+
+    setTimeout(() => {
+        screen.style.display = 'none';
+        resetScores();
+    }, 2500);
 }
+
 if ("serviceWorker" in navigator) {
-navigator.serviceWorker.register("sw.js")
-.then(() => console.log("Service Worker Registered"));
+  navigator.serviceWorker.register("sw.js")
+  .then(() => console.log("Service Worker Registered"));
 }
 
 let deferredPrompt;
