@@ -166,7 +166,7 @@ z-index:20;
 <button class="reset-button" onclick="resetScores()">رجوع</button>  
 
 <!-- الصورة -->
-<img src="bj.jpg" alt="challenge">
+<img src="bj.jpg" id="mainImage" alt="challenge">
 
 <!-- نص الأولاد -->
 <div class="side-text left-text">  
@@ -253,6 +253,7 @@ function resetScores(){
 
 function moveImage(direction, value){
     const step = 10;
+
     if(direction === 'up'){
         imageOffsetY -= step * value;
         if(imageOffsetY < maxUp) imageOffsetY = maxUp;
@@ -260,7 +261,9 @@ function moveImage(direction, value){
         imageOffsetY += step * value;
         if(imageOffsetY > maxDown) imageOffsetY = maxDown;
     }
-    document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
+
+    document.getElementById('mainImage').style.transform =
+        `translateY(${imageOffsetY}px)`;
 }
 function showWinner(text){
     const screen = document.getElementById('winnerScreen');
