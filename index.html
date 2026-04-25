@@ -226,24 +226,27 @@ function moveImage(direction, value){
 
     document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
 }
+
 function checkWinner(){
 
     if(boysScore >= 100){
         boysScore = 100;
+        document.getElementById('boysCounter').innerText = 100;
 
         setTimeout(() => {
             showWinner("🎉 تهانينا! فوز الشباب 🔥");
-            resetScores();
-        }, 600);
+        }, 500);
+        return;
     }
 
-    else if(girlsScore >= 100){
+    if(girlsScore >= 100){
         girlsScore = 100;
+        document.getElementById('girlsCounter').innerText = 100;
 
         setTimeout(() => {
             showWinner("🎉 تهانينا! فوز البنات 💛");
-            resetScores();
-        }, 600);
+        }, 500);
+        return;
     }
 }
 function showWinner(text){
@@ -256,8 +259,8 @@ function showWinner(text){
     setTimeout(() => {
         screen.style.display = 'none';
         resetScores();
-    }, 2500);
-}
+    }, 3000);
+           }
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js")
