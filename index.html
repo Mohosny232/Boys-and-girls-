@@ -132,8 +132,9 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-object-fit:cover;
-transition: transform 0.3s ease;
+object-fit:cover; 
+   transition: transform 0.8s ease-in-out;
+
 }
 </style>
 
@@ -175,22 +176,24 @@ let boysScore = 0;
 let girlsScore = 0;  
 let imageOffsetY = 0;  
 const maxUp = -340;  
-const maxDown = 300;  function addScore(team, value){
-// تشغيل صوت الضغط
-document.getElementById('clickSound').currentTime = 0;
-document.getElementById('clickSound').play();
+const maxDown = 300; 
+function addScore(team, value){
 
-if(team === 'boys'){  
-    boysScore += value;  
-    document.getElementById('boysCounter').innerText = boysScore;  
-} else if(team === 'girls'){  
-    girlsScore += value;  
-    document.getElementById('girlsCounter').innerText = girlsScore;  
-}  
+    document.getElementById('clickSound').currentTime = 0;
+    document.getElementById('clickSound').play();
 
-// 🔥 هنا المهم  
-checkWinner();
+    if(team === 'boys'){
+        boysScore += value;
+        document.getElementById('boysCounter').innerText = boysScore;
+    } else if(team === 'girls'){
+        girlsScore += value;
+        document.getElementById('girlsCounter').innerText = girlsScore;
+    }
 
+    // 👇 ندي وقت للصورة تتحرك الأول
+    setTimeout(() => {
+        checkWinner();
+    }, 300);
 }
 
 function resetScores(){
@@ -224,18 +227,24 @@ function moveImage(direction, value){
     document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
 }
 function checkWinner(){
-if(boysScore >= 100){
-setTimeout(() => {
-alert("🎉 تهانينا! فوز الشباب 🔥");
-resetScores();
-}, 100);
-}
 
-if(girlsScore >= 100){  
-    setTimeout(() => {  
-        alert("🎉 تهانينا! فوز البنات 💛");  
-        resetScores();  
-    }, 100);  
+    if(boysScore >= 100){
+        boysScore = 100;
+
+        setTimeout(() => {
+            showWinner("🎉 تهانينا! فوز الشباب 🔥");
+            resetScores();
+        }, 600);
+    }
+
+    else if(girlsScore >= 100){
+        girlsScore = 100;
+
+        setTimeout(() => {
+            showWinner("🎉 تهانينا! فوز البنات 💛");
+            resetScores();
+        }, 600);
+    }
 }
 
 }
