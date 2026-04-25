@@ -131,24 +131,32 @@ transition:0.3s;
     left:0;
     width:100vw;
     height:100vh;
-    background:white;
+
     display:none;
     justify-content:center;
     align-items:center;
-    z-index:99999;
 
-    /* مهم للعرض */
-    flex-direction:row;
+    background: rgba(0,0,0,0.4);
+    z-index:99999;
 }
 
 #winnerText{
-    font-size:60px;
-    font-weight:bold;
-    color:black;
-    text-align:center;
+    display:flex;
+    flex-direction:row; /* مهم للعرض */
+    align-items:center;
+    justify-content:center;
+    gap:10px;
 
-    /* يخليها مناسبة للعرض */
-    transform: rotate(0deg);
+    background:white;
+    color:black;
+
+    padding:10px 15px;
+    border-radius:10px;
+
+    font-size:20px; /* صغير */
+    font-weight:bold;
+
+    max-width:50%;
 }
 img{
 position:absolute;
