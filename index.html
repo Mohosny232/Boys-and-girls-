@@ -189,7 +189,29 @@ z-index:20;
   <button class="button yellow" onclick="addScore('girls',1); moveImage('up',1);">+1</button>  
   <button class="button yellow" onclick="addScore('girls',5); moveImage('up',5);">+5</button>  
 </div>
-<audio id="clickSound" src="click.m4a"></audio>
+<div id="winnerScreen" style="
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:99999;
+">
+
+  <div id="winnerText" style="
+  font-size:40px;
+  font-weight:bold;
+  color:black;
+  text-align:center;
+  ">
+  </div>
+
+</div>
+    <audio id="clickSound" src="click.m4a"></audio>
 <script>
 let boysScore = 0;
 let girlsScore = 0;
@@ -240,17 +262,20 @@ function moveImage(direction, value){
     }
     document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
 }
-function checkWinner(){
-    if(boysScore >= 100){
-        alert("🎉 تهانينا! فوز الشباب 🔥");
-        resetScores();
-    }
+function showWinner(text){
+    const screen = document.getElementById('winnerScreen');
+    const textEl = document.getElementById('winnerText');
 
-    if(girlsScore >= 100){
-        alert("🎉 تهانينا! فوز البنات 💛");
+    textEl.innerText = text;
+
+    screen.style.display = 'flex';
+
+    // بعد 3 ثواني يرجع اللعبة
+    setTimeout(() => {
+        screen.style.display = 'none';
         resetScores();
-    }
-            }
+    }, 3000);
+}
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js")
     .then(() => console.log("Service Worker Registered"));
@@ -277,7 +302,7 @@ installBtn.addEventListener("click", async () => {
   }
 });
 
-</script>
+<script src="script.js?v=3"></script>
 
 </body>
 </html>
