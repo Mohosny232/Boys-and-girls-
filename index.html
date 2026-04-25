@@ -242,19 +242,15 @@ function moveImage(direction, value){
 }
 function checkWinner(){
     if(boysScore >= 100){
-        setTimeout(() => {
-            alert("🎉 تهانينا! فوز الشباب 🔥");
-            resetScores();
-        }, 100);
+        alert("🎉 تهانينا! فوز الشباب 🔥");
+        resetScores();
     }
 
     if(girlsScore >= 100){
-        setTimeout(() => {
-            alert("🎉 تهانينا! فوز البنات 💛");
-            resetScores();
-        }, 100);
+        alert("🎉 تهانينا! فوز البنات 💛");
+        resetScores();
     }
-}
+            }
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js")
     .then(() => console.log("Service Worker Registered"));
