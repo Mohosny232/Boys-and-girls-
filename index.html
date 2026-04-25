@@ -125,7 +125,25 @@ z-index:10;
 transition:0.3s;
 
 }
+#winnerScreen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:white;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
 
+#winnerText{
+    font-size:40px;
+    font-weight:bold;
+    color:black;
+    text-align:center;
+}
 img{
 position:absolute;
 top:0;
@@ -170,6 +188,9 @@ z-index:20;
   <button class="button yellow" onclick="addScore('girls',1); moveImage('up',1);">+1</button>    
   <button class="button yellow" onclick="addScore('girls',5); moveImage('up',5);">+5</button>    
 </div>  
+<div id="winnerScreen">
+  <div id="winnerText"></div>
+</div>
 <audio id="clickSound" src="click.m4a"></audio>  
 <script>  
 let boysScore = 0;  
@@ -259,9 +280,8 @@ function showWinner(text){
     setTimeout(() => {
         screen.style.display = 'none';
         resetScores();
-    }, 3000);
-           }
-
+    }, 2500);
+}
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js")
   .then(() => console.log("Service Worker Registered"));
