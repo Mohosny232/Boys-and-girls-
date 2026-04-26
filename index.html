@@ -260,8 +260,8 @@ function updateImage(){
 
     const maxScore = 30;
 
-    // 👇 ناخد نص ارتفاع الشاشة
-    const totalDistance = window.innerHeight / 2;
+    // 👇 نخلي الحركة أكبر شوية
+    const totalDistance = window.innerHeight * 0.7;
 
     let target = 0;
 
@@ -275,12 +275,20 @@ function updateImage(){
         target = 0;
     }
 
+    // 🔥 زود إحساس الحركة (Boost)
+    const diff = Math.abs(boysScore - girlsScore);
+
+    let boost = 1;
+
+    if(diff < 5){
+        boost = 2; // 👈 لو الفرق صغير يكبر الحركة
+    }
+
+    target *= boost;
+
     const img = document.getElementById('mainImage');
 
-    const diff = Math.abs(boysScore - girlsScore);
-    const duration = diff > 10 ? 0.2 : 0.5;
-
-    img.style.transition = `transform ${duration}s ease-out`;
+    img.style.transition = "transform 0.25s ease-out";
     img.style.transform = `translateY(${target}px)`;
 }
 
