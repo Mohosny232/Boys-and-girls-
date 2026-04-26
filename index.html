@@ -258,17 +258,18 @@ function addScore(team, value){
 
 function updateImage(){
 
-    const totalDistance = 300;
+    const img = document.getElementById('mainImage');
+
     const maxScore = 50;
+
+    // 👇 نخلي الحركة على قد الشاشة
+    const totalDistance = window.innerHeight / 2;
 
     const diff = boysScore - girlsScore;
 
     imageOffsetY = (diff / maxScore) * totalDistance;
 
-    const img = document.getElementById('mainImage');
-    if(img){
-        img.style.transform = `translateY(${imageOffsetY}px)`;
-    }
+    img.style.transform = `translateY(${imageOffsetY}px)`;
 }
 
 function resetScores(){
