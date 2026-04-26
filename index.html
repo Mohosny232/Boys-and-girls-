@@ -221,64 +221,70 @@ z-index:20;
 </div>
 <audio id="clickSound" src="click.m4a"></audio>  
 <script>
-let boysScore = 0;
+ let boysScore = 0;
 let girlsScore = 0;
 let imageOffsetY = 0;
 
 function addScore(team, value){
 
-    // صوت الضغط
-    document.getElementById('clickSound').currentTime = 0;
-    document.getElementById('clickSound').play();
+    const sound = document.getElementById('clickSound');
+    if(sound){
+        sound.currentTime = 0;
+        sound.play();
+    }
 
-    // تحديث الاسكور
     if(team === 'boys'){
         boysScore += value;
         if(boysScore > 50) boysScore = 50;
-        document.getElementById('boysCounter').innerText = boysScore;
     } 
     else if(team === 'girls'){
         girlsScore += value;
         if(girlsScore > 50) girlsScore = 50;
-        document.getElementById('girlsCounter').innerText = girlsScore;
     }
 
-    // 🔥 الحركة (مهم)
+    // تحديث الأرقام (لو موجودة)
+    const boysEl = document.getElementById('boysCounter');
+    const girlsEl = document.getElementById('girlsCounter');
+
+    if(boysEl) boysEl.innerText = boysScore;
+    if(girlsEl) girlsEl.innerText = girlsScore;
+
+    // الحركة
     updateImage();
 
-    // تحقق من الفوز
-    setTimeout(() => {
-        checkWinner();
-    }, 300);
+    // الفوز
+    setTimeout(checkWinner, 300);
 }
 
-// 🔥 الحركة المتوازنة (شد وجذب)
 function updateImage(){
 
-    const totalDistance = 300; // أقصى حركة
+    const totalDistance = 300;
     const maxScore = 50;
 
     const diff = boysScore - girlsScore;
 
     imageOffsetY = (diff / maxScore) * totalDistance;
 
-    document.querySelector('mainImage').style.transform =
-        `translateY(${imageOffsetY}px)`;
+    const img = document.getElementById('mainImage');
+    if(img){
+        img.style.transform = `translateY(${imageOffsetY}px)`;
+    }
 }
 
-// إعادة التعيين
 function resetScores(){
     boysScore = 0;
     girlsScore = 0;
-
-    document.getElementById('boysCounter').innerText = 0;
-    document.getElementById('girlsCounter').innerText = 0;
-
     imageOffsetY = 0;
-    document.querySelector('mainImage').style.transform = `translateY(0px)`;
+
+    const boysEl = document.getElementById('boysCounter');
+    const girlsEl = document.getElementById('girlsCounter');
+    const img = document.getElementById('mainImage');
+
+    if(boysEl) boysEl.innerText = 0;
+    if(girlsEl) girlsEl.innerText = 0;
+    if(img) img.style.transform = `translateY(0px)`;
 }
 
-// التحقق من الفوز
 function checkWinner(){
 
     if(boysScore >= 50){
@@ -292,10 +298,11 @@ function checkWinner(){
     }
 }
 
-// شاشة التهنئة
 function showWinner(text){
     const screen = document.getElementById('winnerScreen');
     const textEl = document.getElementById('winnerText');
+
+    if(!screen || !textEl) return;
 
     textEl.innerText = text;
     screen.style.display = 'flex';
@@ -305,8 +312,6 @@ function showWinner(text){
         resetScores();
     }, 2500);
 }
-
-
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js")
   .then(() => console.log("Service Worker Registered"));
