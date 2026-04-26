@@ -166,7 +166,7 @@ left:0;
 width:100%;
 height:100%;
 object-fit:cover; 
-   transition: transform 0.8s ease-in-out;
+   transition: transform 1.0s ease-in-out;
 
 }
 </style>
@@ -265,8 +265,8 @@ function moveImage(direction, value){
 
 function checkWinner(){
 
-    if(boysScore >= 100){
-        boysScore = 100;
+    if(boysScore >= 50){
+        boysScore = 50;
         document.getElementById('boysCounter').innerText = 100;
 
         setTimeout(() => {
@@ -275,8 +275,8 @@ function checkWinner(){
         return;
     }
 
-    if(girlsScore >= 100){
-        girlsScore = 100;
+    if(girlsScore >= 50){
+        girlsScore = 50;
         document.getElementById('girlsCounter').innerText = 100;
 
         setTimeout(() => {
