@@ -260,35 +260,22 @@ function updateImage(){
 
     const maxScore = 30;
 
-    // 👇 نخلي الحركة أكبر شوية
-    const totalDistance = window.innerHeight * 0.7;
+    // 👇 مسافة الحركة = نص الشاشة
+    const totalDistance = window.innerHeight / 2;
 
-    let target = 0;
+    const diff = boysScore - girlsScore;
 
-    if(girlsScore > boysScore){
-        target = -(girlsScore / maxScore) * totalDistance;
-    }
-    else if(boysScore > girlsScore){
-        target = (boysScore / maxScore) * totalDistance;
-    }
-    else{
-        target = 0;
-    }
+    let target = (diff / maxScore) * totalDistance;
 
-    // 🔥 زود إحساس الحركة (Boost)
-    const diff = Math.abs(boysScore - girlsScore);
-
-    let boost = 1;
-
-    if(diff < 5){
-        boost = 2; // 👈 لو الفرق صغير يكبر الحركة
-    }
-
-    target *= boost;
+    // 🔥 أهم سطر: نمنع الخروج بره الحدود
+    if(target > totalDistance) target = totalDistance;
+    if(target < -totalDistance) target = -totalDistance;
 
     const img = document.getElementById('mainImage');
 
-    img.style.transition = "transform 0.25s ease-out";
+    // 👇 حركة سريعة وواضحة حتى مع +1
+    img.style.transition = "transform 0.15s linear";
+
     img.style.transform = `translateY(${target}px)`;
 }
 
