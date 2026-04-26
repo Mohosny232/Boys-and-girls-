@@ -235,11 +235,11 @@ function addScore(team, value){
 
     if(team === 'boys'){
         boysScore += value;
-        if(boysScore > 50) boysScore = 50;
+        if(boysScore > 30) boysScore = 30;
     } 
     else if(team === 'girls'){
         girlsScore += value;
-        if(girlsScore > 50) girlsScore = 50;
+        if(girlsScore > 30) girlsScore = 30;
     }
 
     // تحديث الأرقام (لو موجودة)
@@ -260,7 +260,7 @@ function updateImage(){
 
     const img = document.getElementById('mainImage');
 
-    const maxScore = 50;
+    const maxScore = 30;
 
     // 👇 نخلي الحركة على قد الشاشة
     const totalDistance = window.innerHeight / 2;
@@ -288,12 +288,12 @@ function resetScores(){
 
 function checkWinner(){
 
-    if(boysScore >= 50){
+    if(boysScore >= 30){
         showWinner("🎉 تهانينا! فوز الشباب 🔥");
         return;
     }
 
-    if(girlsScore >= 50){
+    if(girlsScore >= 30){
         showWinner("🎉 تهانينا! فوز البنات 💛");
         return;
     }
