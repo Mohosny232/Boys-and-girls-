@@ -259,34 +259,23 @@ function addScore(team, value){
 function updateImage(){
 
     const maxScore = 30;
-    const totalDistance = window.innerHeight * 0.7;
+
+    // 👇 مسافة الحركة = نص الشاشة
+    const totalDistance = window.innerHeight / 2;
 
     const diff = boysScore - girlsScore;
 
     let target = (diff / maxScore) * totalDistance;
 
-    // منع الخروج برا
+    // 🔥 أهم سطر: نمنع الخروج بره الحدود
     if(target > totalDistance) target = totalDistance;
     if(target < -totalDistance) target = -totalDistance;
 
     const img = document.getElementById('mainImage');
 
-    // 🔥 السرعة حسب الفرق
-    const difference = Math.abs(diff);
+    // 👇 حركة سريعة وواضحة حتى مع +1
+    img.style.transition = "transform 0.15s linear";
 
-    let speed;
-
-    if(difference < 5){
-        speed = 0.25; // بطيء (تعادل)
-    } 
-    else if(difference < 15){
-        speed = 0.15; // متوسط
-    } 
-    else{
-        speed = 0.07; // سريع جدًا (الفريق الخسران يلحق)
-    }
-
-    img.style.transition = `transform ${speed}s linear`;
     img.style.transform = `translateY(${target}px)`;
 }
 function resetScores(){
