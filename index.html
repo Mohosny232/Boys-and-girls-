@@ -258,23 +258,30 @@ function addScore(team, value){
 
 function updateImage(){
 
-    const totalDistance = 300;
-    const maxScore = 50;
+    const maxScore = 30;
 
-    const diff = boysScore - girlsScore;
+    // 👇 ناخد نص ارتفاع الشاشة
+    const totalDistance = window.innerHeight / 2;
 
-    imageOffsetY = (diff / maxScore) * totalDistance;
+    let target = 0;
 
-    // نحسب السرعة حسب قوة الفرق
-    const speed = Math.min(1.2, Math.abs(diff) / 20); 
-    const duration = 0.15 + (1 - speed) * 0.6;
+    if(girlsScore > boysScore){
+        target = -(girlsScore / maxScore) * totalDistance;
+    }
+    else if(boysScore > girlsScore){
+        target = (boysScore / maxScore) * totalDistance;
+    }
+    else{
+        target = 0;
+    }
 
-    const img = document.querySelector('img');
+    const img = document.getElementById('mainImage');
 
-    img.style.transition = `transform ${duration}s linear`;
+    const diff = Math.abs(boysScore - girlsScore);
+    const duration = diff > 10 ? 0.2 : 0.5;
 
-    img.style.transform =
-        `translateY(${imageOffsetY}px)`;
+    img.style.transition = `transform ${duration}s ease-out`;
+    img.style.transform = `translateY(${target}px)`;
 }
 
 function resetScores(){
