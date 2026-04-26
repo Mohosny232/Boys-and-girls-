@@ -191,100 +191,94 @@ z-index:20;
 ">  
 نزّل التطبيق  
 </button>  
-<!-- زر الرجوع -->  
-<button class="reset-button" onclick="resetScores()">رجوع</button>    <!-- الصورة -->  <img src="bj.jpg" alt="challenge">  <!-- نص الأولاد -->  <div class="side-text left-text">    
-  أولاد <span class="counter" id="boysCounter">0</span>    
-</div>    <!-- نص البنات -->  <div class="side-text right-text">    
-  بنات <span class="counter" id="girlsCounter">0</span>    
-</div>    <!-- أزرار الأولاد -->  <div class="left-buttons">    
-  <button class="button red" onclick="addScore('boys',1); moveImage('down',1);">+1</button>    
-  <button class="button red" onclick="addScore('boys',5); moveImage('down',5);">+5</button>    
-</div>    <!-- أزرار البنات -->  <div class="right-buttons">    
-  <button class="button yellow" onclick="addScore('girls',1); moveImage('up',1);">+1</button>    
-  <button class="button yellow" onclick="addScore('girls',5); moveImage('up',5);">+5</button>    
+<!-- أزرار الأولاد -->
+<div class="left-buttons">  
+  <button class="button red" onclick="addScore('boys',1)">+1</button>  
+  <button class="button red" onclick="addScore('boys',5)">+5</button>  
 </div>  
+
+<!-- أزرار البنات -->
+<div class="right-buttons">  
+  <button class="button yellow" onclick="addScore('girls',1)">+1</button>  
+  <button class="button yellow" onclick="addScore('girls',5)">+5</button>  
+</div>
 <div id="winnerScreen">
   <div id="winnerText"></div>
 </div>
 <audio id="clickSound" src="click.m4a"></audio>  
-<script>  
-let boysScore = 0;  
-let girlsScore = 0;  
-let imageOffsetY = 0;  
-const maxUp = -340;  
-const maxDown = 300; 
+<script>
+let boysScore = 0;
+let girlsScore = 0;
+let imageOffsetY = 0;
+
 function addScore(team, value){
 
+    // صوت الضغط
     document.getElementById('clickSound').currentTime = 0;
     document.getElementById('clickSound').play();
 
+    // تحديث الاسكور
     if(team === 'boys'){
         boysScore += value;
+        if(boysScore > 50) boysScore = 50;
         document.getElementById('boysCounter').innerText = boysScore;
-    } else if(team === 'girls'){
+    } 
+    else if(team === 'girls'){
         girlsScore += value;
+        if(girlsScore > 50) girlsScore = 50;
         document.getElementById('girlsCounter').innerText = girlsScore;
     }
 
-    // 👇 ندي وقت للصورة تتحرك الأول
+    // 🔥 الحركة (مهم)
+    updateImage();
+
+    // تحقق من الفوز
     setTimeout(() => {
         checkWinner();
     }, 300);
 }
 
+// 🔥 الحركة المتوازنة (شد وجذب)
+function updateImage(){
+
+    const totalDistance = 300; // أقصى حركة
+    const maxScore = 50;
+
+    const diff = boysScore - girlsScore;
+
+    imageOffsetY = (diff / maxScore) * totalDistance;
+
+    document.querySelector('img').style.transform =
+        `translateY(${imageOffsetY}px)`;
+}
+
+// إعادة التعيين
 function resetScores(){
-boysScore = 0;
-girlsScore = 0;
-document.getElementById('boysCounter').innerText = 0;
-document.getElementById('girlsCounter').innerText = 0;
+    boysScore = 0;
+    girlsScore = 0;
 
-const img = document.querySelector('img');  
-img.style.transition = "transform 1.5s ease";  
-imageOffsetY = 0;  
-img.style.transform = `translateY(0px)`;  
-setTimeout(() => {  
-    img.style.transition = "transform 0.3s ease";  
-}, 1500);
+    document.getElementById('boysCounter').innerText = 0;
+    document.getElementById('girlsCounter').innerText = 0;
 
+    imageOffsetY = 0;
+    document.querySelector('img').style.transform = `translateY(0px)`;
 }
 
-function moveImage(direction, value){
-    const step = 10;
-
-    if(direction === 'up'){
-        imageOffsetY -= step * value;
-        if(imageOffsetY < maxUp) imageOffsetY = maxUp;
-    } 
-    else if(direction === 'down'){
-        imageOffsetY += step * value;
-        if(imageOffsetY > maxDown) imageOffsetY = maxDown;
-    }
-
-    document.querySelector('img').style.transform = `translateY(${imageOffsetY}px)`;
-}
-
+// التحقق من الفوز
 function checkWinner(){
 
     if(boysScore >= 50){
-        boysScore = 50;
-        document.getElementById('boysCounter').innerText = 100;
-
-        setTimeout(() => {
-            showWinner("🎉 تهانينا! فوز الشباب 🔥");
-        }, 500);
+        showWinner("🎉 تهانينا! فوز الشباب 🔥");
         return;
     }
 
     if(girlsScore >= 50){
-        girlsScore = 50;
-        document.getElementById('girlsCounter').innerText = 100;
-
-        setTimeout(() => {
-            showWinner("🎉 تهانينا! فوز البنات 💛");
-        }, 500);
+        showWinner("🎉 تهانينا! فوز البنات 💛");
         return;
     }
 }
+
+// شاشة التهنئة
 function showWinner(text){
     const screen = document.getElementById('winnerScreen');
     const textEl = document.getElementById('winnerText');
@@ -297,6 +291,8 @@ function showWinner(text){
         resetScores();
     }, 2500);
 }
+
+
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js")
   .then(() => console.log("Service Worker Registered"));
