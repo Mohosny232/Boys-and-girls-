@@ -337,7 +337,7 @@ let deferredPrompt = null;
 const installBtn = document.getElementById("installBtn");
 
 // الزر يظهر دائمًا
-installBtn.style.display = "block";
+installBtn.style.display = "none";
 
 // Chrome يرسل حدث التثبيت عندما يكون الـPWA جاهزًا
 window.addEventListener("beforeinstallprompt", (e) => {
