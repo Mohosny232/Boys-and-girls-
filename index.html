@@ -74,27 +74,30 @@ text-align:center;
 .yellow { background:#FFD700; color:black; }
 
 .left-buttons{
-    position:absolute;
-    left:3px;
-    top:calc(4% + 60px);
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-    z-index:10;
+position:absolute;
+left:3px;
+top:calc(5% + 60px);
+display:flex;
+flex-direction: column;
+gap:15px;
+}
+
+.left-buttons .button {
+transform: translateY(-50%) rotate(90deg);
 }
 
 .right-buttons{
-    position:absolute;
-    left:3px;
-    top:calc(80% + 60px);
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-    z-index:10;
+position:absolute;
+left:3px;
+top:calc(70% + 60px);
+display:flex;
+flex-direction: column;
+gap:15px;
 }
-.right-buttons .score-image{
-    width:80px;
-    height:80px;
+
+.right-buttons .button {
+transform: translateY(-50%) rotate(90deg);
+
 }
 /* زر رجوع */
 .reset-button{
@@ -155,30 +158,16 @@ transition:0.3s;
     max-width:50%;
    transform: rotate(90deg);
 }
-#mainImage{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition: transform 1.0s ease-in-out;
-}
-.score-image{
-    position:relative;
-    width:90px;
-    height:90px;
-    object-fit:cover;
-    border-radius:12px;
-    cursor:pointer;
-    display:block;
-    transform:translateY(-50%) rotate(90deg);
-    transition:0.1s;
-}
+img{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+transition: transform 1.0s ease-in-out;
+ }
 
-.score-image:active{
-    transform:translateY(-50%) rotate(90deg) scale(0.9);
-}
 </style>
 
 </head>  
@@ -215,15 +204,14 @@ z-index:20;
 <div class="side-text right-text">  
   بنات <span class="counter" id="girlsCounter">0</span>  
 </div>
-<!-- صورة الأولاد +1 -->
-<div class="left-buttons">
-  <img class="score-image" src="os11.png" onclick="addScore('boys',1)" alt="أولاد">
-</div>
-
-<!-- صورة البنات +1 -->
-<div class="right-buttons">
-  <img class="score-image" src="os12.png" onclick="addScore('girls',1)" alt="بنات">
-</div>
+   <!-- أزرار الأولاد -->  
+<div class="left-buttons">    
+  <button class="button red" onclick="addScore('boys',1)">+1</button>    
+  <button class="button red" onclick="addScore('boys',5)">+5</button>    
+</div>    <!-- أزرار البنات -->  <div class="right-buttons">    
+  <button class="button yellow" onclick="addScore('girls',1)">+1</button>    
+  <button class="button yellow" onclick="addScore('girls',5)">+5</button>    
+</div>  
 <div id="winnerScreen">
   <div id="winnerText"></div>
 </div>
