@@ -334,20 +334,17 @@ if ("serviceWorker" in navigator) {
 let deferredPrompt = null;
 const installBtn = document.getElementById("installBtn");
 
-// الزر يظهر دائمًا
-installBtn.style.display = "block";
-
-// Chrome جهّز التثبيت
 window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault();
+
     deferredPrompt = e;
+
+    installBtn.style.display = "block";
 });
 
-// الضغط على زر التثبيت
 installBtn.addEventListener("click", async () => {
 
     if (!deferredPrompt) {
-        alert("التثبيت غير متاح حاليًا على هذا الجهاز");
         return;
     }
 
@@ -355,14 +352,17 @@ installBtn.addEventListener("click", async () => {
 
     const { outcome } = await deferredPrompt.userChoice;
 
-    console.log("اختيار التثبيت:", outcome);
+    if (outcome === "accepted") {
+        console.log("تم تثبيت التطبيق");
+    }
 
     deferredPrompt = null;
+    installBtn.style.display = "block";
 });
 
-// بعد التثبيت
 window.addEventListener("appinstalled", () => {
     deferredPrompt = null;
+    installBtn.style.display = "block";
 });
 
 </script> 
