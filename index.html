@@ -205,16 +205,14 @@ z-index:20;
 <div class="side-text right-text">  
   بنات <span class="counter" id="girlsCounter">0</span>  
 </div>
-    <!-- أزرار الأولاد -->
-<div class="left-buttons">  
-  <button class="button red" onclick="addScore('boys',1)">+1</button>  
-  <button class="button red" onclick="addScore('boys',5)">+5</button>  
-</div>  
+<!-- صورة الأولاد +1 -->
+<div class="left-buttons">
+  <img class="score-image" src="os11.png" onclick="addScore('boys',1)" alt="أولاد">
+</div>
 
-<!-- أزرار البنات -->
-<div class="right-buttons">  
-  <button class="button yellow" onclick="addScore('girls',1)">+1</button>  
-  <button class="button yellow" onclick="addScore('girls',5)">+5</button>  
+<!-- صورة البنات +1 -->
+<div class="right-buttons">
+  <img class="score-image" src="os12.png" onclick="addScore('girls',1)" alt="بنات">
 </div>
 <div id="winnerScreen">
   <div id="winnerText"></div>
