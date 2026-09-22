@@ -3,7 +3,7 @@
 <head>  
 <meta charset="UTF-8">  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<link rel="manifest" href="manifest.json">  
+<link rel="manifest" href="./manifest.json">  
 <meta name="theme-color" content="#1877f2">  
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap" rel="stylesheet">  
 <title>صورة التحدي ثابتة</title>  
@@ -336,36 +336,37 @@ let deferredPrompt = null;
 
 const installBtn = document.getElementById("installBtn");
 
+// الزر ظاهر دائمًا
+installBtn.style.display = "block";
+
 window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault();
 
     deferredPrompt = e;
 
     installBtn.style.display = "block";
+
+    console.log("التثبيت جاهز");
 });
 
 installBtn.addEventListener("click", async () => {
 
     if (!deferredPrompt) {
-        alert("التطبيق غير جاهز للتثبيت من المتصفح حالياً");
+        alert("التثبيت غير متاح حاليًا من Chrome على هذا الجهاز.");
         return;
     }
 
     deferredPrompt.prompt();
 
-    const { outcome } = await deferredPrompt.userChoice;
+    const result = await deferredPrompt.userChoice;
 
-    if (outcome === "accepted") {
-        console.log("تم تثبيت التطبيق");
-    }
+    console.log("اختيار المستخدم:", result.outcome);
 
     deferredPrompt = null;
-    installBtn.style.display = "none";
 });
 
 window.addEventListener("appinstalled", () => {
-    console.log("تم تثبيت التطبيق بنجاح");
-    installBtn.style.display = "none";
+    console.log("تم تثبيت التطبيق");
 });
 </script> 
 </body>  
