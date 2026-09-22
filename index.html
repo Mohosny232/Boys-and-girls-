@@ -346,22 +346,16 @@ window.addEventListener("beforeinstallprompt", (e) => {
     console.log("PWA INSTALL READY");
 });
 
-// الضغط على زر التثبيت
-installBtn.addEventListener("click", async () => {
+installBtn.onclick = async () => {
+    if (!deferredPrompt) return;
 
-    if (!deferredPrompt) {
-        alert("Chrome لم يجهز التثبيت على هذا الجهاز حتى الآن.");
-        return;
-    }
+    await deferredPrompt.prompt();
 
-    deferredPrompt.prompt();
-
-    const { outcome } = await deferredPrompt.userChoice;
-
-    console.log("Install:", outcome);
+    const result = await deferredPrompt.userChoice;
+    console.log(result.outcome);
 
     deferredPrompt = null;
-});
+};
 
 // عند اكتمال التثبيت
 window.addEventListener("appinstalled", () => {
