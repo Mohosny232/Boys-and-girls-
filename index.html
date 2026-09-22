@@ -196,7 +196,7 @@ color:white;
 border:none;  
 border-radius:8px;  
 cursor:pointer;  
-display:block;
+display:none;
 z-index:20;  
 ">  
 نزّل التطبيق  
@@ -332,27 +332,41 @@ if ("serviceWorker" in navigator) {
   .then(() => console.log("Service Worker Registered"));
 }
 
-let deferredPrompt;
+let deferredPrompt = null;
+
 const installBtn = document.getElementById("installBtn");
 
 window.addEventListener("beforeinstallprompt", (e) => {
-e.preventDefault();
-deferredPrompt = e;
-installBtn.style.display = "block";
+    e.preventDefault();
+
+    deferredPrompt = e;
+
+    installBtn.style.display = "block";
 });
 
 installBtn.addEventListener("click", async () => {
-if (deferredPrompt) {
-deferredPrompt.prompt();
-const { outcome } = await deferredPrompt.userChoice;
-if (outcome === "accepted") {
-console.log("User accepted install");
-}
-deferredPrompt = null;
-installBtn.style.display = "none";
-}
+
+    if (!deferredPrompt) {
+        alert("التطبيق غير جاهز للتثبيت من المتصفح حالياً");
+        return;
+    }
+
+    deferredPrompt.prompt();
+
+    const { outcome } = await deferredPrompt.userChoice;
+
+    if (outcome === "accepted") {
+        console.log("تم تثبيت التطبيق");
+    }
+
+    deferredPrompt = null;
+    installBtn.style.display = "none";
 });
 
+window.addEventListener("appinstalled", () => {
+    console.log("تم تثبيت التطبيق بنجاح");
+    installBtn.style.display = "none";
+});
 </script> 
 </body>  
 </html>  
