@@ -196,7 +196,7 @@ color:white;
 border:none;  
 border-radius:8px;  
 cursor:pointer;  
-display:block;
+display:none;
 z-index:20;  
 ">  
 نزّل التطبيق  
@@ -357,12 +357,12 @@ installBtn.addEventListener("click", async () => {
     }
 
     deferredPrompt = null;
-    installBtn.style.display = "block";
+    installBtn.style.display = "none";
 });
 
 window.addEventListener("appinstalled", () => {
     deferredPrompt = null;
-    installBtn.style.display = "block";
+    installBtn.style.display = "none";
 });
 
 </script> 
