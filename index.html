@@ -196,7 +196,7 @@ color:white;
 border:none;  
 border-radius:8px;  
 cursor:pointer;  
-display:none;
+display:block;
 z-index:20;  
 ">  
 نزّل التطبيق  
@@ -331,21 +331,23 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js")
   .then(() => console.log("Service Worker Registered"));
 }
-
 let deferredPrompt = null;
 const installBtn = document.getElementById("installBtn");
 
+// الزر يظهر دائمًا
+installBtn.style.display = "block";
+
+// Chrome جهّز التثبيت
 window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault();
-
     deferredPrompt = e;
-
-    installBtn.style.display = "block";
 });
 
+// الضغط على زر التثبيت
 installBtn.addEventListener("click", async () => {
 
     if (!deferredPrompt) {
+        alert("التثبيت غير متاح حاليًا على هذا الجهاز");
         return;
     }
 
@@ -353,18 +355,16 @@ installBtn.addEventListener("click", async () => {
 
     const { outcome } = await deferredPrompt.userChoice;
 
-    if (outcome === "accepted") {
-        console.log("تم تثبيت التطبيق");
-    }
+    console.log("اختيار التثبيت:", outcome);
 
     deferredPrompt = null;
-    installBtn.style.display = "none";
 });
 
+// بعد التثبيت
 window.addEventListener("appinstalled", () => {
     deferredPrompt = null;
-    installBtn.style.display = "none";
 });
+
 </script> 
 </body>  
 </html>  
