@@ -196,7 +196,7 @@ color:white;
 border:none;  
 border-radius:8px;  
 cursor:pointer;  
-display:none;
+display:block;
 z-index:20;  
 ">  
 نزّل التطبيق  
@@ -332,19 +332,19 @@ if ("serviceWorker" in navigator) {
   .then(() => console.log("Service Worker Registered"));
 }
 let deferredPrompt = null;
+
 const installBtn = document.getElementById("installBtn");
 
 window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault();
-
     deferredPrompt = e;
-
-    installBtn.style.display = "block";
+    console.log("PWA INSTALL READY");
 });
 
 installBtn.addEventListener("click", async () => {
 
     if (!deferredPrompt) {
+        console.log("Chrome لم يرسل beforeinstallprompt");
         return;
     }
 
@@ -352,19 +352,14 @@ installBtn.addEventListener("click", async () => {
 
     const { outcome } = await deferredPrompt.userChoice;
 
-    if (outcome === "accepted") {
-        console.log("تم تثبيت التطبيق");
-    }
+    console.log("Install:", outcome);
 
     deferredPrompt = null;
-    installBtn.style.display = "none";
 });
 
 window.addEventListener("appinstalled", () => {
-    deferredPrompt = null;
-    installBtn.style.display = "none";
+    console.log("APP INSTALLED");
 });
-
 </script> 
 </body>  
 </html>  
