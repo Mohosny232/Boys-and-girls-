@@ -336,40 +336,35 @@ let deferredPrompt = null;
 
 const installBtn = document.getElementById("installBtn");
 
-// نخلي الزر ظاهر دائمًا
-installBtn.style.display = "block";
-
-// Chrome بيجهز نافذة التثبيت
 window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault();
+
     deferredPrompt = e;
+
     installBtn.style.display = "block";
 });
 
-// عند الضغط على الزر
 installBtn.addEventListener("click", async () => {
 
-    // لو Chrome جهز نافذة التثبيت
-    if (deferredPrompt) {
-
-        deferredPrompt.prompt();
-
-        const { outcome } = await deferredPrompt.userChoice;
-
-        if (outcome === "accepted") {
-            console.log("تم تثبيت التطبيق");
-        }
-
-        deferredPrompt = null;
+    if (!deferredPrompt) {
+        alert("التطبيق غير جاهز للتثبيت من المتصفح حالياً");
         return;
     }
 
-    // لو Chrome لم يجهز النافذة
-    alert("افتح قائمة Chrome ⋮ ثم اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية»");
+    deferredPrompt.prompt();
+
+    const { outcome } = await deferredPrompt.userChoice;
+
+    if (outcome === "accepted") {
+        console.log("تم تثبيت التطبيق");
+    }
+
+    deferredPrompt = null;
+    installBtn.style.display = "none";
 });
 
-// بعد التثبيت
 window.addEventListener("appinstalled", () => {
+    console.log("تم تثبيت التطبيق بنجاح");
     installBtn.style.display = "none";
 });
 </script> 
