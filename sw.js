@@ -1,17 +1,7 @@
-const CACHE_NAME = "app-cache-v3";
+const CACHE_NAME = "app-cache-v4";
 
 self.addEventListener("install", event => {
     self.skipWaiting();
-
-    event.waitUntil(
-        caches.open(CACHE_NAME).then(cache => {
-            return cache.addAll([
-                "./",
-                "./index.html",
-                "./manifest.json"
-            ]);
-        })
-    );
 });
 
 self.addEventListener("activate", event => {
@@ -22,13 +12,13 @@ self.addEventListener("activate", event => {
                     .filter(key => key !== CACHE_NAME)
                     .map(key => caches.delete(key))
             )
-        )
+        ).then(() => self.clients.claim())
     );
-
-    self.clients.claim();
 });
 
 self.addEventListener("fetch", event => {
+    if (event.request.method !== "GET") return;
+
     event.respondWith(
         fetch(event.request)
             .then(response => {
